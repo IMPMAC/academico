@@ -7,7 +7,7 @@ use App\Models\Enrollment;
 
 class GenericEnrollmentSheetService implements EnrollmentSheetInterface
 {
-    public function exportToWord(Enrollment $enrollment)
+    public function exportToWord(Enrollment $enrollment): never
     {
         abort(403, 'This method is not implemented yet');
     }

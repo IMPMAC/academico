@@ -8,17 +8,17 @@ use App\Models\Enrollment;
 
 class GenericCertificatesService implements CertificatesInterface
 {
-    public function exportCertificate(Enrollment $enrollment)
+    public function exportCertificate(Enrollment $enrollment): never
     {
         abort(403);
     }
 
-    public function exportCourseResults(Course $course)
+    public function exportCourseResults(Course $course): never
     {
         abort(403);
     }
 
-    public function exportResult(Enrollment $enrollment)
+    public function exportResult(Enrollment $enrollment): never
     {
         abort(403);
     }

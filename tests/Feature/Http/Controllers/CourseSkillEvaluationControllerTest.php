@@ -26,7 +26,7 @@ class CourseSkillEvaluationControllerTest extends TestCase
     }
 
     /** @test */
-    public function edit_returns_an_ok_response()
+    public function edit_returns_an_ok_response(): never
     {
         $this->markTestIncomplete('Needs refactor for new eval workflow');
         $this->logAdmin();
@@ -47,7 +47,7 @@ class CourseSkillEvaluationControllerTest extends TestCase
     }
 
     /** @test */
-    public function index_returns_an_ok_response()
+    public function index_returns_an_ok_response(): never
     {
         $this->markTestIncomplete('Needs refactor for new eval workflow');
         $this->logAdmin();
@@ -64,7 +64,7 @@ class CourseSkillEvaluationControllerTest extends TestCase
     }
 
     /** @test */
-    public function skills_can_be_evaluated()
+    public function skills_can_be_evaluated(): never
     {
         $this->markTestIncomplete('Needs refactor for new eval workflow');
         $this->logAdmin();
@@ -73,7 +73,7 @@ class CourseSkillEvaluationControllerTest extends TestCase
         $enrollment = factory(Enrollment::class)->create();
         $course->skills()->attach($skill, ['weight' => 1]);
         $skillScale = factory(SkillScale::class)->create();
-        $this->assertEmpty($course->skill_evaluations);
+        static::assertEmpty($course->skill_evaluations);
 
         $response = $this->post(route('storeSkillEvaluation'), [
             'skill' => $skill->id,
@@ -83,7 +83,7 @@ class CourseSkillEvaluationControllerTest extends TestCase
         $course->refresh();
 
         $response->assertOk();
-        $this->assertEquals($enrollment->skill_evaluations->first()->skill_id, $skill->id);
-        $this->assertEquals($enrollment->skill_evaluations->first()->skill_scale_id, $skillScale->id);
+        static::assertEquals($enrollment->skill_evaluations->first()->skill_id, $skill->id);
+        static::assertEquals($enrollment->skill_evaluations->first()->skill_scale_id, $skillScale->id);
     }
 }

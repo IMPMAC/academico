@@ -97,7 +97,7 @@ class AttendanceTest extends TestCase
         $this->assertDatabaseMissing('attendances', $attributes);
     }
 
-    public function test_attendance_overview_per_course()
+    public function test_attendance_overview_per_course(): never
     {
         $this->markTestIncomplete();
         // the teacher can view the attendance for their courses

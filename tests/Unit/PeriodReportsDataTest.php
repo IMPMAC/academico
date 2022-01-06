@@ -28,7 +28,7 @@ class PeriodReportsDataTest extends TestCase
     {
         $period = Period::get_default_period();
 
-        $total = rand(2, 10);
+        $total = random_int(2, 10);
         for ($i = 0; $i < $total; $i++) {
             // given an enrollment in the current period
             $course = factory(Course::class)->create(['period_id' => $period->id]);
@@ -48,7 +48,7 @@ class PeriodReportsDataTest extends TestCase
         $period = Period::get_default_period();
 
         // given an enrollment in the current period
-        $total = rand(2, 10);
+        $total = random_int(2, 10);
         for ($i = 0; $i < $total; $i++) {
             $course = factory(Course::class)->create(['period_id' => $period->id]);
             $student = factory(Student::class)->create();
@@ -66,7 +66,9 @@ class PeriodReportsDataTest extends TestCase
      */
     public function testRealEnrollmentsCountExcludesDeletedEnrollments()
     {
-        $total = rand(2, 10);
+        $enrollment = null;
+        $period = null;
+        $total = random_int(2, 10);
         for ($i = 0; $i < $total; $i++) {
             // given an enrollment in the current period
             $period = Period::get_default_period();
@@ -130,7 +132,7 @@ class PeriodReportsDataTest extends TestCase
         $course = factory(Course::class)->create(['period_id' => $period->id]);
 
         // given a number of students
-        $studentsEnrolledOnce = rand(2, 12);
+        $studentsEnrolledOnce = random_int(2, 12);
 
         for ($i = 0; $i < $studentsEnrolledOnce; $i++) {
             $student = factory(Student::class)->create();
@@ -139,7 +141,7 @@ class PeriodReportsDataTest extends TestCase
 
         // If some students are enrolled in two courses
         $course2 = factory(Course::class)->create(['period_id' => $period->id]);
-        $studentsEnrolledTwice = rand(2, 12);
+        $studentsEnrolledTwice = random_int(2, 12);
 
         for ($i = 0; $i < $studentsEnrolledTwice; $i++) {
             $student = factory(Student::class)->create();

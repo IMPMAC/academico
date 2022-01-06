@@ -14,7 +14,7 @@ class ApolearnService implements LMSInterface
 {
     public $apiKey;
 
-    private string $token;
+    private readonly string $token;
 
     public function __construct()
     {

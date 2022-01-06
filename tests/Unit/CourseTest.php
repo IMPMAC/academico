@@ -24,7 +24,7 @@ class CourseTest extends TestCase
         $this->initialStartDate = now()->addWeeks($this->weeksUntilCourseStart);
         $this->initialEndDate = now()->addWeeks($this->weeksUntilCourseEnd);
 
-        $this->eventDay = rand(0, 6);
+        $this->eventDay = random_int(0, 6);
         $this->expectedEvents = ($this->weeksUntilCourseEnd - $this->weeksUntilCourseStart);
 
         if (now()->format('w') == $this->eventDay) {
@@ -54,7 +54,7 @@ class CourseTest extends TestCase
         $this->assertEquals($this->expectedEvents, $course->events->count());
 
         // extended in a random number of weeks
-        $changeInWeeks = rand(2, 5);
+        $changeInWeeks = random_int(2, 5);
         $extendedStartDate = now()->addWeeks($this->weeksUntilCourseStart - $changeInWeeks);
         $extendedEndDate = now()->addWeeks($this->weeksUntilCourseEnd + $changeInWeeks);
 
@@ -101,7 +101,7 @@ class CourseTest extends TestCase
         $this->assertEquals($this->expectedEvents, $course->events->count());
 
         // reduce in a random number of weeks
-        $changeInWeeks = rand(1, 2);
+        $changeInWeeks = random_int(1, 2);
         $reducedStartDate = now()->addWeeks($this->weeksUntilCourseStart + $changeInWeeks);
         $reducedEndDate = now()->addWeeks($this->weeksUntilCourseEnd - $changeInWeeks);
 

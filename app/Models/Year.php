@@ -46,9 +46,7 @@ class Year extends Model
                 ->where('periods.year_id', $this->id)
                 ->whereIn('enrollments.status_id', ['1', '2']) // filter out cancelled enrollments, todo make this configurable.
                 ->where('enrollments.parent_id', null)->where('enrollments.deleted_at', null)
-                ->where(function($query) {
-                    return $query->where('students.gender_id', 0)->orWhereNull('students.gender_id');
-                })
+                ->where(fn($query) => $query->where('students.gender_id', 0)->orWhereNull('students.gender_id'))
                 ->distinct('student_id')->count('enrollments.student_id');
         }
 

@@ -28,7 +28,7 @@ class GradeControllerTest extends TestCase
     }
 
     /** @test */
-    public function add_grade_type_to_course_creates_grades_for_students()
+    public function add_grade_type_to_course_creates_grades_for_students(): never
     {
         $this->markTestIncomplete('Needs refactor for new eval workflow');
         $this->logAdmin();
@@ -39,9 +39,9 @@ class GradeControllerTest extends TestCase
         $enrollment_id = $student->enroll($course);
         $gradeType = factory(GradeType::class)->create();
         // has no grade types
-        $this->assertEquals(0, $course->grade_types()->count());
+        static::assertEquals(0, $course->grade_types()->count());
         // and no grades for the student
-        $this->assertEmpty($course->grades);
+        static::assertEmpty($course->grades);
 
         // after adding a grade type
         $response = $this->post('course/gradetype', [
@@ -52,7 +52,7 @@ class GradeControllerTest extends TestCase
 
 //        $response->assertRedirect();
         // the grade type is listed
-        $this->assertNotEmpty($course->grade_types());
+        static::assertNotEmpty($course->grade_types());
     }
 
     /** @test */
@@ -100,7 +100,7 @@ class GradeControllerTest extends TestCase
     }
 
     /** @test */
-    public function gradetypes_can_be_added_to_course_by_authorized_users()
+    public function gradetypes_can_be_added_to_course_by_authorized_users(): never
     {
         $this->markTestIncomplete('Test awaiting update to reflect new structure and logic');
         $teacher = factory(Teacher::class)->create();
@@ -132,7 +132,7 @@ class GradeControllerTest extends TestCase
     }
 
     /** @test */
-    public function remove_grade_type_from_course_returns_an_ok_response()
+    public function remove_grade_type_from_course_returns_an_ok_response(): never
     {
         $this->markTestIncomplete('Needs refactor for new eval workflow');
         $this->logAdmin();
@@ -143,7 +143,7 @@ class GradeControllerTest extends TestCase
         $grade = factory(Grade::class)->create([
             'enrollment_id' => $enrollment->id,
         ]);
-        $this->assertNotEmpty($enrollment->grades);
+        static::assertNotEmpty($enrollment->grades);
 
         $response = $this->delete(
             route(
@@ -156,6 +156,6 @@ class GradeControllerTest extends TestCase
         );
 
         $response->assertOk();
-        $this->assertEmpty($enrollment->fresh()->grades);
+        static::assertEmpty($enrollment->fresh()->grades);
     }
 }

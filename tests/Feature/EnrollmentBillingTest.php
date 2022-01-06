@@ -56,7 +56,7 @@ class EnrollmentBillingTest extends TestCase
     }
 
     /** @test */
-    public function default_fees_are_billed_along_with_enrollment()
+    public function default_fees_are_billed_along_with_enrollment(): never
     {
         // [WIP] given several fees recorded in the DB
         // the fees with a flag of "default" will be automatically added to the cart along with an enrollment

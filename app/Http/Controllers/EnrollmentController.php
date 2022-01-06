@@ -34,7 +34,7 @@ class EnrollmentController extends Controller
 {
     use PeriodSelection;
 
-    private EnrollmentSheetInterface $enrollmentSheetService;
+    private readonly EnrollmentSheetInterface $enrollmentSheetService;
 
     public function __construct()
     {

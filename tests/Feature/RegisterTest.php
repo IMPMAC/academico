@@ -34,12 +34,12 @@ class RegisterTest extends TestCase
      * Check that a user is created with the form action endpoint.
      * @test
      */
-    public function testIfUserIsCreated()
+    public function testIfUserIsCreated(): never
     {
         $this->markTestIncomplete('Test unfinished');
     }
 
-    public function test_that_a_student_is_created()
+    public function test_that_a_student_is_created(): never
     {
         $this->markTestIncomplete('Test unfinished');
     }
@@ -48,7 +48,7 @@ class RegisterTest extends TestCase
      * Check that validation rules prevent incomplete data to be submitted to the DB.
      * @test
      */
-    public function testUserCreationValidationRules()
+    public function testUserCreationValidationRules(): never
     {
         // when we post failing data to the endpoint
         // Assert that the errors are returned

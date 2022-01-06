@@ -106,9 +106,7 @@ class EnrollmentCrudController extends CrudController
                 'name' => 'id',
                 'label' => 'ID',
                 'wrapper' => [
-                    'element' => function ($crud, $column, $entry) {
-                        return $entry->status_id > 2 ? 'del' : 'span';
-                    },
+                    'element' => fn($crud, $column, $entry) => $entry->status_id > 2 ? 'del' : 'span',
                 ],
             ],
 
@@ -117,9 +115,7 @@ class EnrollmentCrudController extends CrudController
                 'type' => 'text',
                 'name' => 'student.idnumber',
                 'wrapper' => [
-                    'element' => function ($crud, $column, $entry) {
-                        return $entry->status_id > 2 ? 'del' : 'span';
-                    },
+                    'element' => fn($crud, $column, $entry) => $entry->status_id > 2 ? 'del' : 'span',
                 ],
             ],
 
@@ -130,9 +126,7 @@ class EnrollmentCrudController extends CrudController
                 'label' => __('Last Name'),
                 'type' => 'relationship',
                 'wrapper' => [
-                    'element' => function ($crud, $column, $entry) {
-                        return $entry->status_id > 2 ? 'del' : 'span';
-                    },
+                    'element' => fn($crud, $column, $entry) => $entry->status_id > 2 ? 'del' : 'span',
                 ],
                 'searchLogic' => function ($query, $column, $searchTerm) {
                     $query->orWhereHas('student', function ($q) use ($searchTerm) {
@@ -150,9 +144,7 @@ class EnrollmentCrudController extends CrudController
                 'label' => __('First Name'),
                 'type' => 'relationship',
                 'wrapper' => [
-                    'element' => function ($crud, $column, $entry) {
-                        return $entry->status_id > 2 ? 'del' : 'span';
-                    },
+                    'element' => fn($crud, $column, $entry) => $entry->status_id > 2 ? 'del' : 'span',
                 ],
                 'searchLogic' => function ($query, $column, $searchTerm) {
                     $query->orWhereHas('student', function ($q) use ($searchTerm) {
@@ -202,9 +194,7 @@ class EnrollmentCrudController extends CrudController
                 'model' => EnrollmentStatusType::class,
                 'wrapper' => [
                     'element' => 'span',
-                    'class' => function ($crud, $column, $entry) {
-                        return 'badge badge-pill badge-'.$entry->enrollmentStatus->styling();
-                    },
+                    'class' => fn($crud, $column, $entry) => 'badge badge-pill badge-'.$entry->enrollmentStatus->styling(),
                 ],
             ],
 

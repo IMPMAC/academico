@@ -42,11 +42,7 @@ class Student extends Model implements HasMedia
 
     public function scopeEnrolled($query)
     {
-        return $query->whereHas('enrollments', function ($q) {
-            return $q->whereHas('course', function ($q) {
-                return $q->where('period_id', Period::get_default_period()->id);
-            });
-        });
+        return $query->whereHas('enrollments', fn($q) => $q->whereHas('course', fn($q) => $q->where('period_id', Period::get_default_period()->id)));
     }
 
     public function scopeComputedLeadType($query, $leadTypeId)
